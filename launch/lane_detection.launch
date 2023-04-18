@@ -1,0 +1,24 @@
+<launch>
+
+  <arg name="onnx_file" default="$(find laneatt)/data/lane.onnx"/>
+  <arg name="engine_file" default="$(find laneatt)/data/lane.engine"/>
+  <arg name="mode" default="FP32"/>
+  <arg name="in/image" default="/image_raw"/>
+  <arg name="out/image" default="/output/rois" />
+  <arg name="max_batch_size" default="1"/>
+  <arg name="mean" default="[0.485f, 0.456f, 0.406f]"/>
+  <arg name="std" default="[0.229f, 0.224f, 0.225f]"/>
+
+
+  <node pkg="laneatt" type="laneatt_node" name="laneatt" output="screen">
+    <remap from="in/image" to="$(arg in/image)" />
+    <remap from="out/image" to="$(arg out/image)" />
+    <param name="onnx_file" type="str" value="$(arg onnx_file)"/>
+    <param name="engine_file" type="str" value="$(arg engine_file)"/>
+    <param name="mode" type="str" value="$(arg mode)"/>
+    <param name="max_batch_size" value="$(arg max_batch_size)"/>
+    <rosparam param="mean" subst_value="True">$(arg mean)</rosparam>
+    <rosparam param="std" subst_value="True">$(arg std)</rosparam>
+  </node>
+
+</launch>

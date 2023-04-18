@@ -1,0 +1,10 @@
+<library path="lib/libsmoke_nodelet">
+
+  <class name="lane_detection/smoke"
+         type="lane_detection::TensorrtSegmentNodelet"
+         base_class_type="nodelet::Nodelet">
+    <description>
+    </description>
+  </class>
+
+</library>

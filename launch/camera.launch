@@ -1,0 +1,12 @@
+<launch>
+  <node pkg="usb_cam" name="traffic_light_camera" type="usb_cam_node">
+    <remap from="~image_raw" to="image_raw" />
+    <remap from="~camera_info" to="camera_info" />
+    <param name="camera_frame_id" value="traffic_light/camera_optical_link" />
+    <param name="camera_name" value="camera" />
+    <param name="video_device" type="string" value="/dev/video2" />
+    <param name="image_width" type="int" value="1280" />
+    <param name="image_height" type="int" value="720" />
+    <param name="pixel_format" value="yuyv" />
+  </node>
+</launch>
